@@ -13,42 +13,54 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background: linear-gradient(to bottom, #fdeff9, #ecf0ff);
+    background-color:#fdeff5;
     font-family: 'Segoe UI', sans-serif;
     overflow:hidden;
 }
 
-/* Fondo suave animado */
+/* 🌸 Fondo con flores rosas estáticas */
 body::before{
-    content:"";
+    content:"🌸 🌷 🌸 🌷 🌸 🌷 🌸 🌷 🌸";
     position:absolute;
-    width:200%;
-    height:200%;
-    background: radial-gradient(circle, #ffffff40 2px, transparent 2px);
-    background-size:40px 40px;
-    animation: moveBg 60s linear infinite;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    font-size:40px;
+    opacity:0.08;
+    line-height:80px;
+    letter-spacing:30px;
+    white-space:pre-wrap;
+    pointer-events:none;
 }
 
-@keyframes moveBg{
-    from{transform:translate(0,0);}
-    to{transform:translate(-200px,-200px);}
+/* Nombre principal */
+h1{
+    position:absolute;
+    top:40px;
+    text-align:center;
+    width:100%;
+    font-size:26px; /* más grande */
+    color:#c77dff;
+    letter-spacing:1px;
+    font-weight:600;
 }
 
 /* Carta */
 .envelope{
     position:relative;
-    width:300px;
-    height:200px;
+    width:320px;
+    height:210px;
     background:#ffd6e8;
     border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
     cursor:pointer;
     transition:transform 0.6s;
     z-index:2;
 }
 
 .envelope:active{
-    transform:scale(0.95);
+    transform:scale(0.97);
 }
 
 /* Tapa */
@@ -57,7 +69,7 @@ body::before{
     width:100%;
     height:100%;
     background:#ffb6d9;
-    clip-path: polygon(0 0, 50% 50%, 100% 0);
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
     transform-origin: top;
     transition: transform 1s;
     border-radius:15px 15px 0 0;
@@ -71,7 +83,7 @@ body::before{
     background:white;
     top:5%;
     left:5%;
-    border-radius:10px;
+    border-radius:12px;
     padding:20px;
     box-sizing:border-box;
     font-size:14px;
@@ -81,16 +93,7 @@ body::before{
     transition: all 1s;
     transform:translateY(20px);
     overflow-y:auto;
-}
-
-h1{
-    position:absolute;
-    top:30px;
-    text-align:center;
-    width:100%;
-    font-size:20px;
-    color:#b583c6;
-    letter-spacing:1px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* Abierto */
@@ -112,7 +115,7 @@ h1{
     <div class="flap"></div>
     <div class="letter">
         <p>
-        Fuiste una parte importante de mi vida y guardo con gratitud los momentos que compartimos.
+        Fuiste una parte importante y guardo con gratitud los momentos que compartimos.
         Deseo que estés bien, que la vida te sonría y que encuentres felicidad en cada paso que des.
         <br><br>
         Feliz San Valentín. 🤍<br>
@@ -121,7 +124,7 @@ h1{
     </div>
 </div>
 
-<audio id="music" src="say-yes-to-heaven-instrumental.mp3" autoplay loop></audio>
+<audio id="music" src="say-yes-to-heaven-instrumental.mp3" loop></audio>
 
 <script>
 let opened = false;
@@ -137,12 +140,14 @@ function openLetter(){
     }
 }
 
-/* Intento de autoplay al cargar */
+/* Intento de autoplay */
 window.addEventListener("load", ()=>{
     const music = document.getElementById("music");
+    music.volume = 0.5;
     music.play().catch(()=>{});
 });
 </script>
 
 </body>
 </html>
+
